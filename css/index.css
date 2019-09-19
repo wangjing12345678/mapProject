@@ -33,6 +33,7 @@
     background: #fff;
 
     box-shadow: 0 0.02rem 0.14rem 0 rgba(0,0,0,0.3);
+    z-index: 99;
 }
 .chooseDot{
     width: 1.52rem;
@@ -49,5 +50,13 @@
     color: #fff;
     border-radius: 0.15rem;
     box-shadow: 0 0.02rem 0.14rem 0 rgba(0,0,0,0.3);
+}
+.wrap{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
 }
 
