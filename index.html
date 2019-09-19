@@ -35,7 +35,6 @@
         var marker = new google.maps.Marker({position: uluru, map: map,icon:icon,title:'1'});
 
         google.maps.event.addListener(marker,'click',function(e) {
-            e.stopPropagation()
             $(".dialog").css({'display':'block'})
         });
 
@@ -57,9 +56,9 @@
 
     }
     searchMaps('北京')
-    $("#map").on('click',function () {
-        $(".dialog").css({'display':'none'})
-    })
+    // $("#map").on('click',function () {
+    //     $(".dialog").css({'display':'none'})
+    // })
 </script>
 
 
