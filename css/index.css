@@ -21,7 +21,7 @@
     height: 92%;
 
 }
-.dialog{
+.dialogWrap{
     position: fixed;
 
     width: 5.54rem;
@@ -30,10 +30,19 @@
     left: 0;
     margin: 0 auto;
     top: 1rem;
-    background: #fff;
 
-    box-shadow: 0 0.02rem 0.14rem 0 rgba(0,0,0,0.3);
     z-index: 99;
+    display: none;
+}
+.dialog{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5.54rem;
+    height: 3rem;
+    background: #fff;
+    box-shadow: 0 0.02rem 0.14rem 0 rgba(0,0,0,0.3);
+
 }
 .chooseDot{
     width: 1.52rem;
@@ -59,4 +68,34 @@
     bottom: 0;
     z-index: 60;
 }
+
+
+@-webkit-keyframes zoomIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.zoomIn {
+    animation: zoomIn 0.3s;
+}
+
 
