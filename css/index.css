@@ -21,4 +21,33 @@
     height: 92%;
 
 }
+.dialog{
+    position: fixed;
+
+    width: 5.54rem;
+    height: 3rem;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    top: 1rem;
+    background: #fff;
+
+    box-shadow: 0 0.02rem 0.14rem 0 rgba(0,0,0,0.3);
+}
+.chooseDot{
+    width: 1.52rem;
+    height: 0.53rem;
+    background: rgb(229,64,83);
+    text-align: center;
+    line-height: 0.53rem;
+    border:0.01rem solid #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: -0.25rem;
+    color: #fff;
+    border-radius: 0.15rem;
+    box-shadow: 0 0.02rem 0.14rem 0 rgba(0,0,0,0.3);
+}
 
