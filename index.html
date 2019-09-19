@@ -20,13 +20,13 @@
 
 <script>
     // Initialize and add the map
-    var icon = "image/icon.png"
+    var icon = {url:'image/icon.png',scaledSize:new google.maps.Size(25,40),anchor: new google.maps.Point(13, 35)}
     function initMap() {
         // The location of Uluru
         var uluru = {lat: -25.344, lng: 131.036};
         // The map, centered at Uluru
         var map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 4, center: uluru});
+            document.getElementById('map'), {zoom: 60, center: uluru});
         // The marker, positioned at Uluru
         var marker = new google.maps.Marker({position: uluru, map: map,icon:icon,title:'1'});
     }
