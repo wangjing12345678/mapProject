@@ -31,6 +31,23 @@
         var icon = {url:'image/icon.png',scaledSize:new google.maps.Size(25,25),anchor: new google.maps.Point(13, 35)}
         var marker = new google.maps.Marker({position: uluru, map: map,icon:icon,title:'1'});
     }
+
+
+    function searchMaps(address) {
+        $.ajax({
+            url:'https://maps.googleapis.com/maps/api/geocode/json?address='+encodeURI(address)+'&key=AIzaSyCC4DLsWr7l-2HSlDEoPODFbvxV81WG5rk',
+            async:true,
+            cache:true,
+            processData:false,
+            contentType:false,
+            success:function (res) {
+                console.log(res)
+
+            }
+        })
+
+    }
+    searchMaps('北京')
 </script>
 
 
