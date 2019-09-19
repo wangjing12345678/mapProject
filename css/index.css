@@ -89,7 +89,10 @@
         transform: scale3d(0.3, 0.3, 0.3);
     }
 
-    50% {
+    30% {
+        opacity: 0.5;
+    }
+    50%{
         opacity: 1;
     }
 }
