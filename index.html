@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Title</title>
+    <script src="js/rem.js"></script>
+    <link rel="stylesheet" href="css/mui.min.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/mui.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+
+</head>
+<body>
+<div class="mapBody">
+    <div class="chooseDefault_title">选择默认网点</div>
+    <div id="map"></div>
+</div>
+
+
+<script>
+    // Initialize and add the map
+    var icon = "image/icon.png"
+    function initMap() {
+        // The location of Uluru
+        var uluru = {lat: -25.344, lng: 131.036};
+        // The map, centered at Uluru
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 4, center: uluru});
+        // The marker, positioned at Uluru
+        var marker = new google.maps.Marker({position: uluru, map: map,icon:icon,title:'1'});
+    }
+</script>
+
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC4DLsWr7l-2HSlDEoPODFbvxV81WG5rk&callback=initMap"></script>
+</body>
+</html>
