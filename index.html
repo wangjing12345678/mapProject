@@ -34,7 +34,8 @@
         var icon = {url:'image/icon.png',scaledSize:new google.maps.Size(25,25),anchor: new google.maps.Point(13, 35)}
         var marker = new google.maps.Marker({position: uluru, map: map,icon:icon,title:'1'});
 
-        google.maps.event.addListener(marker,'click',function() {
+        google.maps.event.addListener(marker,'click',function(e) {
+            e.stopPropagation()
             $(".dialog").css({'display':'block'})
         });
 
