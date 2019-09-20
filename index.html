@@ -91,7 +91,11 @@
            var marker = new google.maps.Marker({
                position:position[l],
                map: map,
-               label: String(l)
+               label: String(l),
+               labelStyle:{ //标题的style样式
+                   color: "#fff",
+                   fontSize: "0.28rem"
+               },
            });
 
            attachSecretMessage(marker,l);
