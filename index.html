@@ -70,30 +70,47 @@
         var icon = {url:'image/icon.png',scaledSize:new google.maps.Size(25,25),anchor: new google.maps.Point(13, 35)}
         var marker = new google.maps.Marker({position: uluru, map: map,icon:icon,title:'1'});
 
+        var contentString = '<div id="content">' +
+            '<div>' +
+            '</div>' +
+            '<h1>我的标签</h1>' +
+            '<div id="bodyContent">' +
+            '<p class = "mapStyle">我的淘宝 <a href="http://ggydggyd.taobao.com">http://ggydggyd.taobao.com</a>' +
+            '</div>' +
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
         google.maps.event.addListener(marker,'click',function() {
+            infowindow.open(map, marker);
             $(".dialogWrap").css({'display':'block'})
             $(".dialog").addClass("zoomIn")
             $(".wrap").css({'display':'block'})
         });
 
+
+
+
+
     }
 
-
-    function searchMaps(address) {
-        $.ajax({
-            url:'https://maps.googleapis.com/maps/api/geocode/json?address='+encodeURI(address)+'&key=AIzaSyCC4DLsWr7l-2HSlDEoPODFbvxV81WG5rk',
-            async:true,
-            cache:true,
-            processData:false,
-            contentType:false,
-            success:function (res) {
-                console.log(res)
-
-            }
-        })
-
-    }
-    searchMaps('北京')
+    //
+    // function searchMaps(address) {
+    //     $.ajax({
+    //         url:'https://maps.googleapis.com/maps/api/geocode/json?address='+encodeURI(address)+'&key=AIzaSyCC4DLsWr7l-2HSlDEoPODFbvxV81WG5rk',
+    //         async:true,
+    //         cache:true,
+    //         processData:false,
+    //         contentType:false,
+    //         success:function (res) {
+    //             console.log(res)
+    //
+    //         }
+    //     })
+    //
+    // }
+    // searchMaps('北京')
 
 
     $(".wrap").on('click',function () {
