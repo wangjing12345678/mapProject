@@ -75,10 +75,10 @@
         // The location of Uluru
         var uluru = {lat: -25.344, lng: 131.036};
         var position = [{lat: -25.344, lng: 131.036},
-            {lat: -30.344, lng: 110.036},
-            {lat: -60.344, lng: 140.036},
-            {lat: -10.344, lng: 100.036},
-            {lat: -89.344, lng: 131.036}];
+            {lat: -28.344, lng: 128.036},
+            {lat: -30.344, lng: 136.036},
+            {lat: -20.344, lng: 100.036},
+            {lat: -24.344, lng: 131.036}];
 
 
         // The map, centered at Uluru
@@ -94,21 +94,28 @@
                label: String(l)
            });
 
-
+           attachSecretMessage(marker,l);
        }
         // var marker = new google.maps.Marker({position: uluru, map: map,icon:icon,label:'1'});
+        function attachSecretMessage(marker, index) {
+            marker.addListener('click', function() {
+                console.log(e)
+                $(".dialogWrap").css({'display':'block'})
+                $(".dialog").addClass("zoomIn")
+                $(".wrap").css({'display':'block'})
+            });
+        }
 
 
 
 
-
-        google.maps.event.addListener(marker,'click',function(e) {
-
-            console.log(e)
-            $(".dialogWrap").css({'display':'block'})
-            $(".dialog").addClass("zoomIn")
-            $(".wrap").css({'display':'block'})
-        });
+        // google.maps.event.addListener(marker,'click',function(e) {
+        //
+        //     console.log(e)
+        //     $(".dialogWrap").css({'display':'block'})
+        //     $(".dialog").addClass("zoomIn")
+        //     $(".wrap").css({'display':'block'})
+        // });
 
 
 
