@@ -12,10 +12,20 @@
 <body>
 <div class="mapBody">
     <div class="chooseDefault_title">选择默认网点 </div>
-    <!--<div class="a"> d点击</div>-->
-    <div id="map"> </div>
+
+    <div id="map"> <div class="a"> d点击</div> </div>
     <div class="dialogWrap">
         <div class="dialog" >
+            <div class="dotmessage">
+                <img src="image/img.png" alt="">
+                <div class="dotbody">
+                    <div class="dot_title">Fastgo</div>
+                    <div>奥城</div>
+                    <div>1212456896</div>
+                </div>
+            </div>
+            <div class="address">shop 10 3282 Moout Lindesay HYW,
+                Browns Plains,QLD4118</div>
             <div class="chooseDot">选择</div>
         </div>
     </div>
@@ -70,18 +80,18 @@
         var icon = {url:'image/icon.png',scaledSize:new google.maps.Size(25,25),anchor: new google.maps.Point(13, 35)}
         var marker = new google.maps.Marker({position: uluru, map: map,icon:icon,title:'1'});
 
-        var contentString = '<div id="content">' +
-            '<div>' +
-            '</div>' +
-            '<div id="bodyContent">' +
-            '<p class = "mapStyle">澳大利亚 '+
-            '</div>' +
-            '</div>';
-
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-        infowindow.open(map, marker);
+        // var contentString = '<div id="content">' +
+        //     '<div>' +
+        //     '</div>' +
+        //     '<div id="bodyContent">' +
+        //     '<p class = "mapStyle">澳大利亚 '+
+        //     '</div>' +
+        //     '</div>';
+        //
+        // var infowindow = new google.maps.InfoWindow({
+        //     content: contentString
+        // });
+        // infowindow.open(map, marker);
         google.maps.event.addListener(marker,'click',function() {
 
             $(".dialogWrap").css({'display':'block'})
