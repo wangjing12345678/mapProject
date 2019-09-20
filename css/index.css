@@ -59,6 +59,7 @@
     color: #fff;
     border-radius: 0.15rem;
     box-shadow: 0 0.02rem 0.14rem 0 rgba(0,0,0,0.3);
+    font-size: 0.28rem;
 }
 .wrap{
     position: fixed;
