@@ -73,17 +73,16 @@
         var contentString = '<div id="content">' +
             '<div>' +
             '</div>' +
-            '<h1>我的标签</h1>' +
             '<div id="bodyContent">' +
-            '<p class = "mapStyle">我的淘宝 <a href="http://ggydggyd.taobao.com">http://ggydggyd.taobao.com</a>' +
+            '<p class = "mapStyle">澳大利亚 +
             '</div>' +
             '</div>';
-
+        infowindow.open(map, marker);
         var infowindow = new google.maps.InfoWindow({
             content: contentString
         });
         google.maps.event.addListener(marker,'click',function() {
-            infowindow.open(map, marker);
+
             $(".dialogWrap").css({'display':'block'})
             $(".dialog").addClass("zoomIn")
             $(".wrap").css({'display':'block'})
