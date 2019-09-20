@@ -12,8 +12,8 @@
 <body>
 <div class="mapBody">
     <div class="chooseDefault_title">选择默认网点</div>
-
-    <div id="map"><div class="a"> d点击</div></div>
+    <!--<div class="a"> d点击</div>-->
+    <div id="map"></div>
     <div class="dialogWrap">
         <div class="dialog" >
             <div class="chooseDot">选择</div>
@@ -24,65 +24,65 @@
 </div>
 
 
-<!--<script>-->
-    <!--function initMap() {-->
-        <!--// The location of Uluru-->
-        <!--var uluru = {lat: -25.344, lng: 131.036};-->
-        <!--// The map, centered at Uluru-->
-        <!--var map = new google.maps.Map(-->
-            <!--document.getElementById('map'), {zoom: 5, center: uluru});-->
-        <!--// The marker, positioned at Uluru-->
-        <!--var icon = {url:'image/icon.png',scaledSize:new google.maps.Size(25,25),anchor: new google.maps.Point(13, 35)}-->
-        <!--var marker = new google.maps.Marker({position: uluru, map: map,icon:icon,title:'1'});-->
-
-        <!--google.maps.event.addListener(marker,'click',function() {-->
-            <!--$(".dialogWrap").css({'display':'block'})-->
-            <!--$(".dialog").addClass("zoomIn")-->
-            <!--$(".wrap").css({'display':'block'})-->
-        <!--});-->
-
-    <!--}-->
-
-
-    <!--function searchMaps(address) {-->
-        <!--$.ajax({-->
-            <!--url:'https://maps.googleapis.com/maps/api/geocode/json?address='+encodeURI(address)+'&key=AIzaSyCC4DLsWr7l-2HSlDEoPODFbvxV81WG5rk',-->
-            <!--async:true,-->
-            <!--cache:true,-->
-            <!--processData:false,-->
-            <!--contentType:false,-->
-            <!--success:function (res) {-->
-                <!--console.log(res)-->
-
-            <!--}-->
-        <!--})-->
-
-    <!--}-->
-    <!--searchMaps('北京')-->
-
-
-    <!--$(".wrap").on('click',function () {-->
-            <!--$(".dialogWrap").css({'display':'none'})-->
-            <!--$(".dialog").removeClass("zoomIn")-->
-            <!--$(".wrap").css({'display':'none'})-->
-    <!--})-->
-
-<!--</script>-->
-
-
 <script>
-    $(".a").on('click',function () {
-        $(".dialogWrap").css({'display':'block'})
-        $(".dialog").addClass("zoomIn")
-        $(".wrap").css({'display':'block'})
-    })
+    function initMap() {
+        // The location of Uluru
+        var uluru = {lat: -25.344, lng: 131.036};
+        // The map, centered at Uluru
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 5, center: uluru});
+        // The marker, positioned at Uluru
+        var icon = {url:'image/icon.png',scaledSize:new google.maps.Size(25,25),anchor: new google.maps.Point(13, 35)}
+        var marker = new google.maps.Marker({position: uluru, map: map,icon:icon,title:'1'});
+
+        google.maps.event.addListener(marker,'click',function() {
+            $(".dialogWrap").css({'display':'block'})
+            $(".dialog").addClass("zoomIn")
+            $(".wrap").css({'display':'block'})
+        });
+
+    }
+
+
+    function searchMaps(address) {
+        $.ajax({
+            url:'https://maps.googleapis.com/maps/api/geocode/json?address='+encodeURI(address)+'&key=AIzaSyCC4DLsWr7l-2HSlDEoPODFbvxV81WG5rk',
+            async:true,
+            cache:true,
+            processData:false,
+            contentType:false,
+            success:function (res) {
+                console.log(res)
+
+            }
+        })
+
+    }
+    searchMaps('北京')
+
+
     $(".wrap").on('click',function () {
-        $(".dialogWrap").css({'display':'none'})
-        $(".dialog").removeClass("zoomIn")
-        $(".wrap").css({'display':'none'})
+            $(".dialogWrap").css({'display':'none'})
+            $(".dialog").removeClass("zoomIn")
+            $(".wrap").css({'display':'none'})
     })
+
 </script>
 
-<!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC4DLsWr7l-2HSlDEoPODFbvxV81WG5rk&callback=initMap"></script>-->
+
+<!--<script>-->
+    <!--$(".a").on('click',function () {-->
+        <!--$(".dialogWrap").css({'display':'block'})-->
+        <!--$(".dialog").addClass("zoomIn")-->
+        <!--$(".wrap").css({'display':'block'})-->
+    <!--})-->
+    <!--$(".wrap").on('click',function () {-->
+        <!--$(".dialogWrap").css({'display':'none'})-->
+        <!--$(".dialog").removeClass("zoomIn")-->
+        <!--$(".wrap").css({'display':'none'})-->
+    <!--})-->
+<!--</script>-->
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC4DLsWr7l-2HSlDEoPODFbvxV81WG5rk&callback=initMap"></script>
 </body>
 </html>
