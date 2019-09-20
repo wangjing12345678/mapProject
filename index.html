@@ -74,27 +74,37 @@
     function initMap() {
         // The location of Uluru
         var uluru = {lat: -25.344, lng: 131.036};
+        var position = [{lat: -25.344, lng: 131.036},
+            {lat: -30.344, lng: 110.036},
+            {lat: -60.344, lng: 140.036},
+            {lat: -10.344, lng: 100.036},
+            {lat: -89.344, lng: 131.036}];
+
+
         // The map, centered at Uluru
         var map = new google.maps.Map(
             document.getElementById('map'), {zoom: 5, center: uluru});
         // The marker, positioned at Uluru
-        var icon = {url:'image/icon.png',scaledSize:new google.maps.Size(25,25),anchor: new google.maps.Point(13, 35)}
-        var marker = new google.maps.Marker({position: uluru, map: map,icon:icon,label:'1'});
+        // var icon = {url:'image/icon.png',scaledSize:new google.maps.Size(25,25),anchor: new google.maps.Point(13, 35)};
 
-        // var contentString = '<div id="content">' +
-        //     '<div>' +
-        //     '</div>' +
-        //     '<div id="bodyContent">' +
-        //     '<p class = "mapStyle">澳大利亚 '+
-        //     '</div>' +
-        //     '</div>';
-        //
-        // var infowindow = new google.maps.InfoWindow({
-        //     content: contentString
-        // });
-        // infowindow.open(map, marker);
-        google.maps.event.addListener(marker,'click',function() {
+       for(var l=0;l<position.length;l++){
+           var marker = new google.maps.Marker({
+               position:position[i],
+               map: map,
+               label: i
+           });
 
+
+       }
+        // var marker = new google.maps.Marker({position: uluru, map: map,icon:icon,label:'1'});
+
+
+
+
+
+        google.maps.event.addListener(marker,'click',function(e) {
+
+            console.log(e)
             $(".dialogWrap").css({'display':'block'})
             $(".dialog").addClass("zoomIn")
             $(".wrap").css({'display':'block'})
