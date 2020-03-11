@@ -141,6 +141,21 @@
         })
 
     }
+    function searchMaps_lnt() {
+      $.ajax({
+        url:'https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyCC4DLsWr7l-2HSlDEoPODFbvxV81WG5rk',
+        async:true,
+        cache:true,
+        processData:false,
+        contentType:false,
+        success:function (res) {
+          console.log(res)
+
+        }
+      })
+
+    }
+    searchMaps_lnt()
     searchMaps('北京')
 
 
