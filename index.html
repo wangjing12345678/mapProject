@@ -126,22 +126,22 @@
 
     }
 
-    //
-    // function searchMaps(address) {
-    //     $.ajax({
-    //         url:'https://maps.googleapis.com/maps/api/geocode/json?address='+encodeURI(address)+'&key=AIzaSyCC4DLsWr7l-2HSlDEoPODFbvxV81WG5rk',
-    //         async:true,
-    //         cache:true,
-    //         processData:false,
-    //         contentType:false,
-    //         success:function (res) {
-    //             console.log(res)
-    //
-    //         }
-    //     })
-    //
-    // }
-    // searchMaps('北京')
+
+    function searchMaps(address) {
+        $.ajax({
+            url:'https://maps.googleapis.com/maps/api/geocode/json?address='+encodeURI(address)+'&key=AIzaSyCC4DLsWr7l-2HSlDEoPODFbvxV81WG5rk',
+            async:true,
+            cache:true,
+            processData:false,
+            contentType:false,
+            success:function (res) {
+                console.log(res)
+
+            }
+        })
+
+    }
+    searchMaps('北京')
 
 
     $(".wrap").on('click',function () {
