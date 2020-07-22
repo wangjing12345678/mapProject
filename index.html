@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
     <title>Title</title>
     <script src="js/rem.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -11,49 +12,53 @@
 </head>
 <body>
 <div class="mapBody">
-    <div class="chooseDefault_title">选择默认网点 </div>
+    <div class="chooseDefault_title">选择默认网点</div>
 
-    <div id="map"> <div class="a"> d点击</div> </div>
+    <div id="map"></div>
     <div class="dialogWrap">
-        <div class="dialog" >
+        <div class="dialog">
             <div class="dotmessage">
                 <img src="image/img.png" alt="">
                 <div class="dotbody">
+                    <div class="close">×</div>
                     <div class="dot_title">Fastgo</div>
                     <div>奥城</div>
                     <div>1212456896</div>
                 </div>
             </div>
             <div class="address">shop 10 3282 Moout Lindesay HYW,
-                Browns Plains,QLD4118</div>
+                Browns Plains,QLD4118
+            </div>
             <div class="chooseDot">选择</div>
         </div>
     </div>
 
-    <div class="wrap" style="display: none"></div>
+    <!--<div class="wrap" style="display: none"></div>-->
 </div>
 
 
 <script>
-    function getLocation(){
-        if (navigator.geolocation){
+    function getLocation() {
+        if (navigator.geolocation) {
             console.log("keyi ")
-            navigator.geolocation.getCurrentPosition(showPosition,showError);
-        }else{
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
             console.log("不行 ")
             alert("浏览器不支持地理定位。");
         }
     }
-    function showPosition(position){
+
+    function showPosition(position) {
         var lat = position.coords.latitude; //纬度
         var lag = position.coords.longitude; //经度
-        alert('纬度:'+lat+',经度:'+lag);
-        console.log('纬度:'+lat+',经度:'+lag)
+        alert('纬度:' + lat + ',经度:' + lag);
+        console.log('纬度:' + lat + ',经度:' + lag)
     }
 
     getLocation()
-    function showError(error){
-        switch(error.code) {
+
+    function showError(error) {
+        switch (error.code) {
             case error.PERMISSION_DENIED:
                 alert("定位失败,用户拒绝请求地理定位");
                 break;
@@ -79,6 +84,11 @@
             {lat: -30.344, lng: 136.036},
             {lat: -20.344, lng: 100.036},
             {lat: -24.344, lng: 131.036}];
+        var position2 = [{lat: -26.344, lng: 171.036},
+            {lat: -30.344, lng: 148.036},
+            {lat: -36.344, lng: 166.036},
+            {lat: -27.344, lng: 120.036},
+            {lat: -21.344, lng: 111.036}];
 
 
         // The map, centered at Uluru
@@ -87,29 +97,45 @@
         // The marker, positioned at Uluru
         // var icon = {url:'image/icon.png',scaledSize:new google.maps.Size(25,25),anchor: new google.maps.Point(13, 35)};
 
-       for(var l=0;l<position.length;l++){
-           var marker = new google.maps.Marker({
-               position:position[l],
-               map: map,
-               label: String(l),
-               labelStyle:{ //标题的style样式
-                   color: "#fff",
-                   fontSize: "0.28rem"
-               },
-           });
 
-           attachSecretMessage(marker,l);
-       }
+        var markers = []
+
+
+        function setDot(position) {
+            map.setCenter(position[0]);
+            for (var l = 0; l < position.length; l++) {
+                var marker = new google.maps.Marker({
+                    position: position[l],
+                    map: map,
+                    label: String(l),
+                    labelStyle: { //标题的style样式
+                        color: "#fff",
+                        fontSize: "0.28rem"
+                    }
+                });
+                markers.push(marker)
+
+                attachSecretMessage(marker, l);
+            }
+        }
+
         // var marker = new google.maps.Marker({position: uluru, map: map,icon:icon,label:'1'});
         function attachSecretMessage(marker, index) {
-            marker.addListener('click', function() {
-                $(".dialogWrap").css({'display':'block'})
+            marker.addListener('click', function () {
+                // e.stopPropagation()
+                $(".dialogWrap").css({'display': 'block'})
                 $(".dialog").addClass("zoomIn")
-                $(".wrap").css({'display':'block'})
+                $(".wrap").css({'display': 'block'})
             });
         }
 
-
+        setDot(position)
+        setTimeout(function () {
+            markers.forEach(function (value) {
+                value.setMap(null);
+            })
+            setDot(position2)
+        }, 6000)
 
 
         // google.maps.event.addListener(marker,'click',function(e) {
@@ -121,66 +147,68 @@
         // });
 
 
-
-
-
     }
 
 
     function searchMaps(address) {
         $.ajax({
-            url:'https://maps.googleapis.com/maps/api/geocode/json?address='+encodeURI(address)+'&key=AIzaSyCC4DLsWr7l-2HSlDEoPODFbvxV81WG5rk',
-            async:true,
-            cache:true,
-            processData:false,
-            contentType:false,
-            success:function (res) {
+            url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURI(address) + '&key=AIzaSyCC4DLsWr7l-2HSlDEoPODFbvxV81WG5rk',
+            async: true,
+            cache: true,
+            processData: false,
+            contentType: false,
+            success: function (res) {
                 console.log(res)
 
             }
         })
 
     }
-    function searchMaps_lnt() {
-      $.ajax({
-        url:'https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyCC4DLsWr7l-2HSlDEoPODFbvxV81WG5rk',
-        async:true,
-        cache:true,
-        processData:false,
-        contentType:false,
-        success:function (res) {
-          console.log(res)
 
-        }
-      })
+
+    function searchMaps_lnt() {
+        $.ajax({
+            url: 'https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyCC4DLsWr7l-2HSlDEoPODFbvxV81WG5rk',
+            async: true,
+            cache: true,
+            processData: false,
+            contentType: false,
+            success: function (res) {
+                console.log(res)
+
+            }
+        })
 
     }
+
     searchMaps_lnt()
-    searchMaps('北京')
+    searchMaps('penn station, new york, ny')
+    searchMaps('260 Broadway New York NY 10007')
 
 
-    $(".wrap").on('click',function () {
-            $(".dialogWrap").css({'display':'none'})
-            $(".dialog").removeClass("zoomIn")
-            $(".wrap").css({'display':'none'})
+    $(".close").on('click', function (e) {
+        $(".dialogWrap").css({'display': 'none'})
+        $(".dialog").removeClass("zoomIn")
+        // $(".wrap").css({'display': 'none'})
     })
 
 </script>
 
 
 <!--<script>-->
-    <!--$(".a").on('click',function () {-->
-        <!--$(".dialogWrap").css({'display':'block'})-->
-        <!--$(".dialog").addClass("zoomIn")-->
-        <!--$(".wrap").css({'display':'block'})-->
-    <!--})-->
-    <!--$(".wrap").on('click',function () {-->
-        <!--$(".dialogWrap").css({'display':'none'})-->
-        <!--$(".dialog").removeClass("zoomIn")-->
-        <!--$(".wrap").css({'display':'none'})-->
-    <!--})-->
+<!--$(".a").on('click',function () {-->
+<!--$(".dialogWrap").css({'display':'block'})-->
+<!--$(".dialog").addClass("zoomIn")-->
+<!--$(".wrap").css({'display':'block'})-->
+<!--})-->
+<!--$(".wrap").on('click',function () {-->
+<!--$(".dialogWrap").css({'display':'none'})-->
+<!--$(".dialog").removeClass("zoomIn")-->
+<!--$(".wrap").css({'display':'none'})-->
+<!--})-->
 <!--</script>-->
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC4DLsWr7l-2HSlDEoPODFbvxV81WG5rk&callback=initMap"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC4DLsWr7l-2HSlDEoPODFbvxV81WG5rk&callback=initMap"></script>
 </body>
 </html>
